@@ -1,0 +1,79 @@
+**Understanding the Static Keyword in Java**
+
+### 1. Why Do We Need the Static Keyword in Java?
+The `static` keyword in Java is used for memory management and allows methods, variables, or blocks to belong to the class rather than an instance of the class. This means that static members can be accessed without creating an object of the class.
+
+#### Example:
+```java
+class StaticExample {
+    static int count = 0;
+    
+    StaticExample() {
+        count++;
+    }
+    
+    static void displayCount() {
+        System.out.println("Number of objects created: " + count);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StaticExample obj1 = new StaticExample();
+        StaticExample obj2 = new StaticExample();
+        StaticExample.displayCount(); // Output: Number of objects created: 2
+    }
+}
+```
+
+ 2. What is Class Loading and How Does a Java Program Execute?
+Class loading is the process of loading a `.class` file into memory at runtime. The Java ClassLoader is responsible for this. The Java program execution follows these steps:
+   - **Compilation**: The `.java` file is compiled into bytecode (`.class` file).
+   - **Class Loading**: The ClassLoader loads the bytecode into memory.
+   - **Bytecode Verification**: Ensures no illegal code is executed.
+   - **Execution**: The JVM executes the bytecode via the Just-In-Time (JIT) compiler.
+
+### 3. Can We Mark a Local Variable as Static?
+No, a local variable **cannot** be marked as `static`. Static variables belong to the class, while local variables belong to a specific instance or method execution. Since local variables exist only during method execution, making them static would cause scope and memory conflicts.
+
+### 4. Why is the Static Block Executed Before the Main Method?
+A **static block** is executed when the class is loaded into memory, even before the `main()` method runs. This happens because static blocks are executed as part of class initialization.
+
+Example:
+java
+class StaticBlockExample {
+    static {
+        System.out.println("Static Block Executed");
+    }
+    public static void main(String[] args) {
+        System.out.println("Main Method Executed");
+    }
+}
+
+Output:
+
+Static Block Executed
+Main Method Executed
+
+
+5. Why is a Static Method Also Called a Class Method?
+A static method is called a class method because it belongs to the class itself rather than any specific object. It can be accessed using the class name and does not require an object to be invoked.
+
+6. What is the Use of Static Blocks in Java?
+Static blocks are used for initialization of static variables and **executing startup logic before the main method is called.
+ Example:
+```java
+class StaticBlockUsage {
+    static int data;
+    static {
+        data = 100;
+        System.out.println("Static block executed, data initialized to " + data);
+    }
+}
+
+
+
+7. Difference between Static and Instance Variables
+A static variable is associated with the class rather than any specific instance, meaning that all objects of the class share the same static variable. It is stored in the class area of memory and remains constant for all instances. On the other hand, an instance variable belongs to a specific object, meaning each instance of the class has its own copy of the variable. Instance variables are stored in the heap memory, and their values can differ from one object to another.
+8. Difference between Static and Non-Static Members
+Static members belong to the class itself and can be accessed without creating an object. These members are shared across all instances of the class and are stored in the class area of memory. In contrast, non-static members belong to an individual instance of the class and require an object for access. Each instance of the class maintains its own copy of non-static members, and they are stored in heap memory. While static methods can only access static variables directly, non-static methods can access both static and non-static variables.
