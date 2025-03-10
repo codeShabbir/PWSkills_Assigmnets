@@ -1,0 +1,57 @@
+Mutable String in Java
+In Java, strings are immutable, meaning their values cannot be changed after they are created. However, Java provides two classes, StringBuffer and StringBuilder, that allow mutable strings, meaning their values can be modified without creating new objects.
+Example:
+public class MutableStringExample {
+    public static void main(String[] args) {
+        StringBuffer str = new StringBuffer("Hello");
+        str.append(" World");
+        System.out.println(str); // Output: Hello World
+    }
+}
+Here, StringBuffer allows modification of the string by appending new content without creating a new object.
+________________________________________
+1. WAP to reverse a String
+Input: "PWSKILLS"
+Output: "SLLIKSPW"
+Code:
+public class ReverseString {
+    public static void main(String[] args) {
+        String str = "PWSKILLS";
+        StringBuilder reversed = new StringBuilder(str).reverse();
+        System.out.println(reversed);
+    }
+}
+________________________________________
+2. WAP to reverse a sentence while preserving the position
+Input: "Think Twice"
+Output: "kniht eciwt"
+Code:
+public class ReverseWords {
+    public static void main(String[] args) {
+        String sentence = "Think Twice";
+        String[] words = sentence.split(" ");
+        StringBuilder result = new StringBuilder();
+        
+        for (String word : words) {
+            result.append(new StringBuilder(word).reverse()).append(" ");
+        }
+        
+        System.out.println(result.toString().trim());
+    }
+}
+________________________________________
+3. WAP to sort a String Alphabetically
+Input: "PWSKILLS"
+Output: "IKLLPSSW"
+Code:
+import java.util.Arrays;
+
+public class SortString {
+    public static void main(String[] args) {
+        String str = "PWSKILLS";
+        char[] charArray = str.toCharArray();
+        Arrays.sort(charArray);
+        System.out.println(new String(charArray));
+    }
+}
+
