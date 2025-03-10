@@ -1,0 +1,23 @@
+1. An interface in Java is a blueprint of a class that contains only abstract methods and constants. It is used to achieve abstraction and multiple inheritance. Interfaces define a set of methods that a class must implement, but they do not contain any concrete method implementations. In Java 8 and later, interfaces can also include default and static methods with implementations.
+
+2. The allowed modifiers for methods in an interface are public, abstract, default, and static. All methods in an interface are implicitly public and abstract unless explicitly declared otherwise. 
+
+Example:
+
+
+interface Vehicle {
+    void start(); // Implicitly public and abstract
+    default void stop() {
+        System.out.println("Vehicle stopped");
+    }
+    static void service() {
+        System.out.println("Vehicle service scheduled");
+    }
+}
+```
+
+In the above example, the start method is implicitly public and abstract, the stop method is a default method with an implementation, and the service method is a static method.
+
+3. The use of an interface in Java is to define a contract that multiple classes can implement. It allows different classes to share a common behavior without being related through inheritance. Interfaces support multiple inheritance in Java, which is not possible with classes. They also enhance loose coupling by allowing code to depend on abstractions rather than concrete implementations.
+
+4. The difference between an abstract class and an interface in Java is that an abstract class can have both abstract and concrete methods, whereas an interface can only have abstract methods (before Java 8). An abstract class can have constructors, instance variables, and method implementations, while an interface cannot have instance variables or constructors. A class can implement multiple interfaces but can only extend one abstract class. Interfaces are used to define a contract that multiple classes must follow, whereas abstract classes are used for sharing common functionality among related classes.
